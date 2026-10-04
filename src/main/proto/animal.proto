@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package org.store.pro3assignment.generated;
+
+service AnimalService {
+  rpc AddAnimal(AddAnimalRequest) returns (AnimalResponse);
+  rpc GetAnimal(GetAnimalRequest) returns (AnimalResponse);
+  rpc GetAnimalsByProduct (GetAnimalsByProductRequest) returns (GetAnimalsByProductResponse);
+  rpc GetProductsByAnimal (GetProductsByAnimalRequest) returns (GetProductsByAnimalResponse);
+}
+  message Animal{
+    string animalId = 1;
+    string name = 2;
+      }
+  message AddAnimalRequest{
+  string name = 1;
+  }
+  message GetAnimalRequest{
+  string id = 1;
+  }
+  message AnimalResponse {
+  Animal animal = 1;
+  }
+  message Product{
+   string id = 1;
+   string name = 2;
+  }
+  message GetAnimalsByProductRequest{
+  string product_id =1;
+  }
+
+message GetAnimalsByProductResponse {
+  repeated string registration_numbers = 1;
+}
+message GetProductsByAnimalRequest {
+  string registration_number = 1;
+}
+
+message GetProductsByAnimalResponse {
+  repeated Product products = 1;
+}
+
